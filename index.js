@@ -76,7 +76,155 @@ controller.hears(['who are you?' , 'what are you?'], ['direct_message'], functio
   bot.reply(message, 'I\'m Neto Bot\. I\'m here to help you with anything Neto related!' )
 })
 
+controller.hears(['what is ecommerce', 'do you know anything about ecommerce', 'tell me about ecommerce'],'direct_message,direct_mention,mention',function(bot, message) {
+
+  bot.api.reactions.add({
+    timestamp: message.ts,
+    channel: message.channel,
+    name: 'package',
+  },function(err, res) {
+    if (err) {
+      bot.botkit.log('Failed to add emoji reaction :(',err);
+    }
+  });
+
+  bot.reply(message,'By definition e-commerce refers to businesses and consumers buying and selling products online. The majority of e-commerce websites on the internet are retail stores selling products directly to the public. However there are also a proportion of online stores dedicated to business-to-business (B2B) sales or wholesale activity. E-commerce does not only refer to the selling of physical products, it can also refer to the selling of services where payments for the services are made online. As a general rule an e-commerce website is a website where a transfer of funds is completed electronically - hence e-commerce.');
+});
+
+controller.hears(['how does ecommerce','how does e-commerce'],'direct_message,direct_mention,mention',function(bot, message) {
+
+  bot.api.reactions.add({
+    timestamp: message.ts,
+    channel: message.channel,
+    name: 'package',
+  },function(err, res) {
+    if (err) {
+      bot.botkit.log('Failed to add emoji reaction :(',err);
+    }
+  });
+
+  bot.reply(message,"Because there are hundreds of different products and services for consumers and the multitude of different ways these products and services can be delivered, e-commerce by its nature is varied in the way it works. In its most basic form e-commerce works as follows:\n\n"+
+    ">- Consumers choose a product or service on a website\n\n"+
+    ">- Consumers pay electronically on the website (online credit card transactions) or using a third party payment provider such as PayPal\n\n"+
+    ">- The business owner or merchant receives the order and payment and the order is fulfilled (delivered by post, booked in for services etc)\n\n"+
+    "Making payments online is completed via a secure connection to ensure that sensitive data such as credit card details and personal information are kept private.");
+});
+
+controller.hears(['help'],'direct_message,direct_mention,mention',function(bot, message) {
+
+  bot.reply(message,"I don\'t know much right now, but I\'m learning.: nerd_face: I already know the following commands:\n\n"+
+    "> :one: Type `info [domain]` or `info [username]` to *get information* about a Neto customer.");
+});
+
+controller.hears(['style guide'],'direct_message,direct_mention,mention',function(bot, message) {
+
+  bot.reply(message,"Neto uses 4 main brand colours:\n\n"+
+    "*Blue:* #45C0EF\n\n"+
+    "*Green:* #39D3B0\n\n"+
+    "*Pink:* #FC487D\n\n"+
+    "*Yellow:* #FFC800\n\n"+
+    "We use two main fonts, both of which are free from Google:\n\n"+
+    "*Heading font:* Roboto Slab Bold, or Roboto Slab Light.\n\n"+
+    "*Body font:* Open Sans (various weights)\n\n"+
+    "We use Font Awesome for all branding icons.\n\n"+
+    "> http://fontawesome.io/cheatsheet/");
+    });
+
+//Professional Services
+
+controller.hears(['professional service'],'direct_message,direct_mention,mention',function(bot, message) {
+
+  bot.reply(message,"Neto currently offers the following Professional Services:\n\n"+
+">>>Shipping Matrix\n\n"+
+"Payment Method\n\n"+
+"Data Feed\n\n"+
+"Product Data\n\n"+
+"Google Analytics\n\n"+
+"Comparison Shopping Feeds\n\n"+
+"Content Pages\n\n"+
+"Product Categories\n\n"+
+"Data Migration\n\n"+
+"Accounting Integration\n\n"+
+"Google Apps\n\n"+
+"I can tell you more about Professional Services if you would like. Type `ps shipping matrix` to learn more.");
+});
+
+controller.hears(['ps shipping matrix'],'direct_message,direct_mention,mention',function(bot, message) {
+
+  bot.reply(message,"*Shipping Matrix*\n\n"+
+  ">Our e-commerce experts will setup your shipping matrix, import your rates and configure any advanced requirements (such as specific shipping rules for specific products or customer groups).");
+});
+
+controller.hears(['ps payment method'],'direct_message,direct_mention,mention',function(bot, message) {
+
+  bot.reply(message,"*Payment Method*\n\n"+
+  ">We will configure your selected payment methods for you. You will need to supply Paypal or payment gateway account details to complete this service. We will provide details on how to setup a Paypal account and recommended payment gateway providers.");
+});
+
+controller.hears(['ps data feed'],'direct_message,direct_mention,mention',function(bot, message) {
+
+  bot.reply(message,"*Data Feed*\n\n"+
+  ">We will set up custom import or export data feeds on your behalf.");
+});
+
+controller.hears(['ps product data'],'direct_message,direct_mention,mention',function(bot, message) {
+
+  bot.reply(message,"*Product Data*\n\n"+
+  ">We will provide you with a .csv file spreadsheet and instructions on how to populate it with your product data. This spreadsheet will be designed specifically around your product range. Once populated, we will cross check your entries and import your products. Alternatively, if you are already using an existing e-commerce platform, or eBay store, we will migrate your products for you. Note: We will require database access to your existing e-commerce platform or eBay store to perform this service. In the case of eBay the product description you have on your eBay listings will become your web shop description. This includes any design template that exists in the description.");
+});
+
+controller.hears(['ps google analytics'],'direct_message,direct_mention,mention',function(bot, message) {
+
+  bot.reply(message,"*Google Analytics*\n\n"+
+  ">Google Analytics is a free service that allows you to view detailed statistics about the visitors to your website. We will setup Google Analytics for you.");
+});
+
+controller.hears(['ps comparison shopping', 'comparison shopping feeds'],'direct_message,direct_mention,mention',function(bot, message) {
+
+  bot.reply(message,"*Comparison Shopping Feeds*\n\n"+
+  ">Create feeds in required format for selected channels, Setup automatic daily refresh of feeds, Setup feed and account with CSE on your behalf.");
+});
+
+controller.hears(['ps content pages'],'direct_message,direct_mention,mention',function(bot, message) {
+
+  bot.reply(message,"*Content Pages & Invoice Logos*\n\n"+
+  ">We will create your about us page and returns policy page using the data you supply. We will also link these pages to your web shop menus and add your logo to invoices and other print docs. Alternatively you can do this yourself using our easy to use content management system.");
+});
+
+controller.hears(['ps product categories', 'categories'],'direct_message,direct_mention,mention',function(bot, message) {
+
+  bot.reply(message,"*Product Categories*\n\n"+
+  ">We will provide you with a .csv file spreadsheet and instructions on how to populate it with your product categories. Once populated, we will cross check your entries and import your product categories.");
+});
+
+controller.hears(['ps data migration'],'direct_message,direct_mention,mention',function(bot, message) {
+
+  bot.reply(message,"*Data Migration*\n\n"+
+  ">We can transfer your products, categories, images and customer information from any e-commerce solution to Neto. To provide this service we require database access or access to your data in a flat file format (eg: csv). This service does not include migrating static content pages such as about us pages, terms and conditions etc. Static content can be added via your Neto control panel using the Neto Content Management System.");
+});
+
+controller.hears(['ps accounting integration'],'direct_message,direct_mention,mention',function(bot, message) {
+
+  bot.reply(message,"*Accounting Integration*\n\n"+
+  ">We will configure your Xero, Unleashed, MYOB, Quickbooks, Vend or SAASU on your behalf.");
+});
+
+controller.hears(['ps google apps'],'direct_message,direct_mention,mention',function(bot, message) {
+
+  bot.reply(message,"*Google Apps*\n\n"+
+  ">If you are planning on having Neto host your domain name, you will need to setup email prior to going live with Neto. Neto does not manage email on behalf of its clients. Instead clients must utilise a 3rd party email service provider such as Google Apps. We can setup Google apps for email management for you as part of this service. Alternatively if you already have an email service that you use, you can continue to use this service.");
+});
+
+//Professional Services
+
+
+
+
+//Place commands above this line
+
 controller.hears('.*', ['direct_message', 'direct_mention'], function (bot, message) {
   bot.reply(message, 'Sorry <@' + message.user + '>, I don\'t understand. \n')
 })
+
+
 
