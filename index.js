@@ -2,11 +2,6 @@ var Botkit = require('botkit')
 
 var token = process.env.SLACK_TOKEN
 
-if (!process.env.apikey) {
-  console.log('Error: Specify api in environment');
-  process.exit(1);
-}
-
 var controller = Botkit.slackbot({
   // reconnect to Slack RTM when connection goes bad
   retry: Infinity,
