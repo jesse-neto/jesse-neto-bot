@@ -72,10 +72,11 @@ controller.hears(['attachment'], ['direct_message', 'direct_mention'], function 
   })
 })
 
+controller.hears(['who are you?' , 'what are you?'], ['direct_message'], function (bot, message) {
+  bot.reply(message, 'I\'m Neto Bot\. I\'m here to help you with anything Neto related!' )
+})
+
 controller.hears('.*', ['direct_message', 'direct_mention'], function (bot, message) {
   bot.reply(message, 'Sorry <@' + message.user + '>, I don\'t understand. \n')
 })
 
-controller.hears(['who are you?' , 'what are you?'], ['direct_message'], function (bot, message) {
-  bot.reply(message, 'I\'m Neto Bot\. I\'m here to help you with anything Neto related!' )
-})
