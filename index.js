@@ -120,15 +120,10 @@ controller.hears(['help'],'direct_message,direct_mention,mention',function(bot, 
 controller.hears(['style guide'],'direct_message,direct_mention,mention',function(bot, message) {
 
   bot.reply(message,"Neto uses 4 main brand colours:\n\n"+
-    "*Blue:* #45C0EF\n\n"+
+    ">>>*Blue:* #45C0EF\n\n"+
     "*Green:* #39D3B0\n\n"+
     "*Pink:* #FC487D\n\n"+
-    "*Yellow:* #FFC800\n\n"+
-    "We use two main fonts, both of which are free from Google:\n\n"+
-    "*Heading font:* Roboto Slab Bold, or Roboto Slab Light.\n\n"+
-    "*Body font:* Open Sans (various weights)\n\n"+
-    "We use Font Awesome for all branding icons.\n\n"+
-    "> http://fontawesome.io/cheatsheet/");
+    "*Yellow:* #FFC800");
     });
 
 //Professional Services
