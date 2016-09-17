@@ -24,7 +24,7 @@ Want to learn more about eCommerce? Neto Bot has you covered!
 
 ## Interacting with Neto Bot
 
-Getting help from `@Neto Bot` is easy. Simply start a new direct message with **Neto Bot** (`@Neto Bot`) in slack and type: `help` to get a list of the currently available commands.
+Getting help from `@Neto` is easy. Simply start a new direct message with **Neto Bot** (`@Neto`) in slack and type: `help` to get a list of the currently available commands.
 
 ![](https://proservices.neto.com.au/assets/images/jessebot2.png)
 
