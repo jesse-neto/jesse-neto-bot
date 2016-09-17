@@ -5,7 +5,7 @@ background: resources/background.jpg
 config:
   - name: apikey
     friendly_name: Neto API Key
-    info: Neto API key
+    info: Your Neto API key.
     type: secret
     global: true
 #screenshots:

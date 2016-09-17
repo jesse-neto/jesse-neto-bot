@@ -2,6 +2,11 @@ var Botkit = require('botkit')
 
 var token = process.env.SLACK_TOKEN
 
+if (!process.env.apikey) {
+  console.log('Error: Specify api in environment');
+  process.exit(1);
+}
+
 var controller = Botkit.slackbot({
   // reconnect to Slack RTM when connection goes bad
   retry: Infinity,
@@ -226,58 +231,58 @@ controller.hears(['ps google apps'],'direct_message,direct_mention,mention',func
 
 //Neto Account Information
 
-//controller.hears(['info (.*)'],'direct_message,direct_mention,mention',function(bot, message) {
-//
-//  var matches = message.text.match(/info (.*)/i);
-//  var name = matches[1];
-//  var request = require('request');
-//  var XMLText = "<\?xml version=\"1.0\" encoding=\"utf-8\"\?><GetCustomer><Filter><Username>"+name+"</Username><OutputSelector>EmailAddress</OutputSelector><OutputSelector>Username</OutputSelector><OutputSelector>BillingAddress</OutputSelector><OutputSelector>DateOfBirth</OutputSelector><OutputSelector>UserCustom15</OutputSelector><OutputSelector>UserCustom12</OutputSelector><OutputSelector>UserCustom21</OutputSelector></Filter></GetCustomer>";
-//
-//  request({
-//    url: "https://www.neto.com.au/do/WS/NetoAPI",
-//    method: "POST",
-//    headers: {
-//      "NETO_API_KEY": process.env.apikey,
-//      "NETOAPI_ACTION": 'GetCustomer',
-//      "content-type": "application/xml",
-//    },
-//    body: XMLText
-//  }, function (error, response, body){
-//    var parseString = require('xml2js').parseString;
-//    parseString(body, function (err, result) {
-//      if ('GetCustomerResponse' in result ) {
-//        if ('Customer' in result.GetCustomerResponse) {
-//          var customer = result.GetCustomerResponse.Customer[0];
-//          if (customer !== '') {
-//            var botResponse = "Here's what I know about *" +name+ "*\n\n";
-//            if ('BillingAddress' in customer) { botResponse = botResponse + '>>>*Company:*  '+customer.BillingAddress[0].BillCompany[0] +"\n";  }
-//            if ('Username' in customer) { botResponse = botResponse +       '*Username:*  ' + customer.Username[0] +"\n";  }
-//            if ('EmailAddress' in customer) { botResponse = botResponse +   '*Email Address:*  ' + customer.EmailAddress[0] +"\n";  }
-//            if ('BillingAddress' in customer) { botResponse = botResponse + '*Contact:*  ' + customer.BillingAddress[0].BillFirstName[0] +' '+ customer.BillingAddress[0].BillLastName[0]+"\n";  }
-//            if ('BillingAddress' in customer) { botResponse = botResponse + '*Phone:*  '+  customer.BillingAddress[0].BillPhone[0] + "\n";  }
-//            if ('DateOfBirth' in customer) { botResponse = botResponse +    '*Date Of Birth*:  '  + customer.DateOfBirth[0] + "\n";  }
-//            if ('UserCustom15' in customer) { botResponse = botResponse +   '*Web Site*:  '+  customer.UserCustom15[0] + "\n";  }
-//            if ('UserCustom12' in customer) { botResponse = botResponse +   '*Plan*:  '+  customer.UserCustom12[0] + "\n";  }
-//            if ('UserCustom21' in customer) { botResponse = botResponse +   '*Site Status*:  '+  customer.UserCustom21[0] + "\n";  }
-//            if ('AccountBalance' in customer) { botResponse = botResponse + '*Account Balance*:  '+  customer.AccountBalance[0] + "\n";  }
-//            bot.api.reactions.add({
-//              timestamp: message.ts,
-//              channel: message.channel,
-//              name: 'mag',
-//            },function(err, res) {
-//              if (err) {
-//                bot.botkit.log('Failed to add emoji reaction :(',err);
-//              }
-//            });
-//            bot.reply(message, botResponse);
-//          } else {
-//            bot.reply(message, 'Nope, sorry, did not work. Either there was an error, or that is not a Neto customer. Try again.');
-//          }
-//        }
-//      }
-//    });
-//  });
-//});
+controller.hears(['info (.*)'],'direct_message,direct_mention,mention',function(bot, message) {
+
+  var matches = message.text.match(/info (.*)/i);
+  var name = matches[1];
+  var request = require('request');
+  var XMLText = "<\?xml version=\"1.0\" encoding=\"utf-8\"\?><GetCustomer><Filter><Username>"+name+"</Username><OutputSelector>EmailAddress</OutputSelector><OutputSelector>Username</OutputSelector><OutputSelector>BillingAddress</OutputSelector><OutputSelector>DateOfBirth</OutputSelector><OutputSelector>UserCustom15</OutputSelector><OutputSelector>UserCustom12</OutputSelector><OutputSelector>UserCustom21</OutputSelector></Filter></GetCustomer>";
+
+  request({
+    url: "https://www.neto.com.au/do/WS/NetoAPI",
+    method: "POST",
+    headers: {
+      "NETOAPI_KEY": process.env.apikey,
+      "NETOAPI_ACTION": 'GetCustomer',
+      "content-type": "application/xml",
+    },
+    body: XMLText
+  }, function (error, response, body){
+    var parseString = require('xml2js').parseString;
+    parseString(body, function (err, result) {
+      if ('GetCustomerResponse' in result ) {
+        if ('Customer' in result.GetCustomerResponse) {
+          var customer = result.GetCustomerResponse.Customer[0];
+          if (customer !== '') {
+            var botResponse = "Here's what I know about *" +name+ "*\n\n";
+            if ('BillingAddress' in customer) { botResponse = botResponse + '>>>*Company:*  '+customer.BillingAddress[0].BillCompany[0] +"\n";  }
+            if ('Username' in customer) { botResponse = botResponse +       '*Username:*  ' + customer.Username[0] +"\n";  }
+            if ('EmailAddress' in customer) { botResponse = botResponse +   '*Email Address:*  ' + customer.EmailAddress[0] +"\n";  }
+            if ('BillingAddress' in customer) { botResponse = botResponse + '*Contact:*  ' + customer.BillingAddress[0].BillFirstName[0] +' '+ customer.BillingAddress[0].BillLastName[0]+"\n";  }
+            if ('BillingAddress' in customer) { botResponse = botResponse + '*Phone:*  '+  customer.BillingAddress[0].BillPhone[0] + "\n";  }
+            if ('DateOfBirth' in customer) { botResponse = botResponse +    '*Date Of Birth*:  '  + customer.DateOfBirth[0] + "\n";  }
+            if ('UserCustom15' in customer) { botResponse = botResponse +   '*Web Site*:  '+  customer.UserCustom15[0] + "\n";  }
+            if ('UserCustom12' in customer) { botResponse = botResponse +   '*Plan*:  '+  customer.UserCustom12[0] + "\n";  }
+            if ('UserCustom21' in customer) { botResponse = botResponse +   '*Site Status*:  '+  customer.UserCustom21[0] + "\n";  }
+            if ('AccountBalance' in customer) { botResponse = botResponse + '*Account Balance*:  '+  customer.AccountBalance[0] + "\n";  }
+            bot.api.reactions.add({
+              timestamp: message.ts,
+              channel: message.channel,
+              name: 'mag',
+            },function(err, res) {
+              if (err) {
+                bot.botkit.log('Failed to add emoji reaction :(',err);
+              }
+            });
+            bot.reply(message, botResponse);
+          } else {
+            bot.reply(message, 'Nope, sorry, did not work. Either there was an error, or that is not a Neto customer. Try again.');
+          }
+        }
+      }
+    });
+  });
+});
 
 
 //Neto Account Information
