@@ -3,7 +3,7 @@ description: A bot to help with anything Neto related.
 avatar: resources/avatar.png
 background: resources/background.jpg
 config:
-  - name: NETO_API_KEY
+  - name: apikey
     friendly_name: Neto API Key
     info: Neto API key
     type: secret
