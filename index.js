@@ -2,6 +2,11 @@ var Botkit = require('botkit')
 
 var token = process.env.SLACK_TOKEN
 
+if (!process.env.apikey) {
+  console.log('Error: Specify api in environment');
+  process.exit(1);
+}
+
 var controller = Botkit.slackbot({
   // reconnect to Slack RTM when connection goes bad
   retry: Infinity,
@@ -282,39 +287,7 @@ controller.hears(['info (.*)'],'direct_message,direct_mention,mention',function(
 
 //Neto Account Information
 
-//Uptime
 
-controller.hears(['uptime', 'identify yourself', 'who are you', 'what is your name'],
-    'direct_message,direct_mention,mention', function(bot, message) {
-
-        var hostname = os.hostname();
-        var uptime = formatUptime(process.uptime());
-
-        bot.reply(message,
-            ':robot_face: I am a bot named <@' + bot.identity.name +
-             '>. I have been running for ' + uptime + ' on ' + hostname + '.');
-
-    });
-
-function formatUptime(uptime) {
-    var unit = 'second';
-    if (uptime > 60) {
-        uptime = uptime / 60;
-        unit = 'minute';
-    }
-    if (uptime > 60) {
-        uptime = uptime / 60;
-        unit = 'hour';
-    }
-    if (uptime != 1) {
-        unit = unit + 's';
-    }
-
-    uptime = uptime + ' ' + unit;
-    return uptime;
-}
-
-//Uptime
 
 //Place commands above this line
 
