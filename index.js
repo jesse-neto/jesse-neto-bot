@@ -76,7 +76,7 @@ controller.hears('.*', ['direct_message', 'direct_mention'], function (bot, mess
   bot.reply(message, 'Sorry <@' + message.user + '>, I don\'t understand. \n')
 })
 
-controller.hears(['sandwich', 'coffee' ],'direct_message,direct_mention,mention',function(bot, message) {
+controller.hears(['sandwich', 'coffee' ],'direct_message,direct_mention,mention', function(bot, message) {
 
   bot.api.reactions.add({
     timestamp: message.ts,
@@ -91,7 +91,7 @@ controller.hears(['sandwich', 'coffee' ],'direct_message,direct_mention,mention'
   bot.reply(message,'Do I look like I should be in a kitchen?');
 });
 
-controller.hears(['who are you', 'what are you' ],'direct_message,direct_mention,mention',function(bot, message) {
+controller.hears(['who are you', 'what are you'], ['direct_message', 'direct_mention,mention'], function(bot, message) {
 
   bot.api.reactions.add({
     timestamp: message.ts,
