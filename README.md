@@ -16,17 +16,17 @@ Currently Neto Bot can provide you with basic information from a customers card 
 
 Simply type: info `username` or `domain` into a direct message with Neto Bot and he will gather some information on that customer. No need to open the Neto Control Panel, log in, search for and locate the customer.
 
-![](https://proservices.neto.com.au/assets/images/Neto Botinfo.png)
+![](https://proservices.neto.com.au/assets/images/jessebotinfo.png)
 
 Want to learn more about eCommerce? Neto Bot has you covered!
 
-![](https://proservices.neto.com.au/assets/images/Neto Botecommerce.png)
+![](https://proservices.neto.com.au/assets/images/jessebotecommerce.png)
 
 ## Interacting with Neto Bot
 
 Getting help from `@Neto Bot` is easy. Simply start a new direct message with **Neto Bot** (`@Neto Bot`) in slack and type: `help` to get a list of the currently available commands.
 
-![](https://proservices.neto.com.au/assets/images/Neto Bot2.png)
+![](https://proservices.neto.com.au/assets/images/jessebot2.png)
 
 Neto Bot knows the following commands:
 
@@ -41,7 +41,7 @@ Neto Bot has been programmed to help Customer Service in a number of ways:
 - Security check customers
   - type: info `username` or `domain` to be provided with the contact details and DOB for the customer on the phone.
 
-  ![](https://proservices.neto.com.au/assets/images/Neto Botinfo.png)
+  ![](https://proservices.neto.com.au/assets/images/jessebotinfo.png)
 
 - Search Neto Docs easily
   - type: docs `search term` to be provided with a list of results on Neto Docs.
@@ -75,7 +75,7 @@ Neto Bot has been programmed to help Marketing & Content in a number of ways:
   - Ask Neto Bot about Neto's target Persona's and he will happily tell you more.
 - Can't remember what the style guide is? Just ask Neto Bot
 
-  ![](https://proservices.neto.com.au/assets/images/Neto Botstyleguide.png)
+  ![](https://proservices.neto.com.au/assets/images/jessebotstyleguide.png)
 
 
 ### Design
