@@ -241,7 +241,7 @@ controller.hears(['info (.*)'],'direct_message,direct_mention,mention',function(
     url: "https://www.neto.com.au/do/WS/NetoAPI",
     method: "POST",
     headers: {
-      "NETOAPI_KEY": process.env.apikey,
+      "NETO_API_KEY": process.env.apikey,
       "NETOAPI_ACTION": 'GetCustomer',
       "content-type": "application/xml",
     },
